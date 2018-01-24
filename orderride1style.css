@@ -20,3 +20,23 @@ body h5{
  bottom: 0;
  left: 0;
 }
+
+.container{
+	width: 100%;
+}
+.left{
+	width: 50%;
+	float: left;
+}
+.left:hover{
+	background-color: blue;
+	color: #fff;
+}
+.right{
+	width: 50%;
+	float: right;
+}
+.right:hover{
+	background-color: blue;
+	color: #fff;
+}

@@ -21,7 +21,7 @@
   <button id="buttonFastest">Fastest</button>
   <button id="buttonScenic">Scenic</button>
 </div>
-<img src="1.jpg" alt="">
+<img src="https://www.wired.com/wp-content/uploads/2016/11/GoogleMapTA.jpg" alt="">
 <button id="ContinueButton">Continue</button>
 <script src="script.js"></script>
 </body>

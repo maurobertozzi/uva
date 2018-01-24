@@ -18,10 +18,13 @@
 <input type="text">
 
 <h2>When?</h2>
-
+<div class="container">
+	<div class="left">Departure</div>
+	<div class="right">Arrival</div>
+</div>
 
 
 <h5>Now</h5>
-<button id="ContinueButton">Continue</button>
+<button id="ContinueButton" onclick="window.location.href='orderRide2.php'">Continue</button>
 </body>
 </html>
