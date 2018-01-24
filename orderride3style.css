@@ -1,0 +1,38 @@
+body {
+	background-color: #0c59cf;
+	color: white;
+}
+#back {
+	margin-top: -.1em;
+	position: absolute;
+	left: 5;
+	top: 0;
+	font-size: 1.5em;
+}
+#cancel {
+	margin-top: -.1em;
+	position: absolute;
+	right: 5;
+	top: 0;	
+	font-size: 1.5em;
+}
+#title {
+	text-align: center;
+	margin-top: 3em;
+	font-size: 1.5em;
+}
+#map {
+	display: block;
+	margin: 0 auto;
+	width: 90%;
+}
+#drivenBy {
+	text-align: center;
+	color: #b5a1c4;
+	font-size: 1.2em;
+}
+#drivenByAnswer {
+	margin-top: -.5em;
+	text-align: center;
+	font-size: 1.2em;
+}
