@@ -1,20 +1,33 @@
 body{
 	text-align: center;
+	overflow-x: hidden;
 }
 
+body h1{
+    color: #0c59cf;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
 body h2{
-    color: blue;
+    color: #0c59cf;
 }
-
+body h3{
+    color: #0c59cf;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+body h4{
+    color: #0c59cf;
+}
 body h5{
-    color: blue;
+    color: #0c59cf;
 }
 
 #ContinueButton{
  position: absolute;
  border: none;
  width: 100%;
- background-color: blue;
+ background-color: #0c59cf;
  color: white;
  font-size: 1.5em;
  bottom: 0;
@@ -29,7 +42,7 @@ body h5{
 	float: left;
 }
 .left:hover{
-	background-color: blue;
+	background-color: #0c59cf;
 	color: #fff;
 }
 .right{
@@ -37,6 +50,37 @@ body h5{
 	float: right;
 }
 .right:hover{
-	background-color: blue;
+	background-color: #0c59cf;
 	color: #fff;
+}
+
+.btn-group {
+    width: 90%;
+    margin-left: 20%;
+    margin-bottom: 10px;
+}
+.btn-group button {
+    background-color: #fff; /* Green background */
+    border: 1px solid #0c59cf; /* Green border */
+    color: #0c59cf; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    width: 33.333333%;
+}
+
+.btn-group button:hover{
+    background-color: #0c59cf;
+    color: white;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
 }

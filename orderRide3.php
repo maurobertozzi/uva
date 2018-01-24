@@ -6,8 +6,8 @@
 <title>Document</title>
 </head>
 <body>
-	<p id="back"> &lt; Back</p>
-	<p id="cancel">Cancel</p>
+	<p id="back" onclick="window.location.href='orderRide2.php'"> &lt; Back</p>
+	<p id="cancel" onclick="window.location.href='orderRide1.php'">Cancel</p>
 	<h1 id="title">Your car is on its way!</h1>
 	<img id="map" src="https://www.wired.com/wp-content/uploads/2016/11/GoogleMapTA.jpg">
 	<p id="drivenBy">You will be driven by car</p>

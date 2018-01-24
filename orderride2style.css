@@ -4,22 +4,22 @@ body{
     overflow-x: hidden;
 }
 body h2{
-    color: blue;
+    color: #0c59cf;
     margin-top: -20px;
 }
 body h5{
-    color: blue;
+    color: #0c59cf;
     text-align: left;
+    font-size: 1.5em;
 }
 body img{
     width: 100%;
-    height: auto;
 }
 #ContinueButton{
  position: absolute;
  border: none;
  width: 100%;
- background-color: blue;
+ background-color: #0c59cf;
  color: white;
  font-size: 1.5em;
  bottom: 0;
@@ -51,7 +51,7 @@ body img{
     width: 20px;
     height: 20px;
     border-radius: 50px;
-    background: blue;
+    background: #0c59cf;
     cursor: pointer;
 }
 
@@ -69,8 +69,8 @@ body img{
 }
 .btn-group button {
     background-color: #fff; /* Green background */
-    border: 1px solid blue; /* Green border */
-    color: blue; /* White text */
+    border: 1px solid #0c59cf; /* Green border */
+    color: #0c59cf; /* White text */
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
@@ -78,7 +78,7 @@ body img{
 }
 
 .btn-group button:hover{
-    background-color: blue;
+    background-color: #0c59cf;
     color: white;
 }
 
@@ -91,6 +91,9 @@ body img{
 
 .btn-group button:not(:last-child) {
     border-right: none; /* Prevent double borders */
+}
+.mapimg{
+    width: 90%;
 }
 
 
