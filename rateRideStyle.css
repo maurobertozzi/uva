@@ -1,0 +1,35 @@
+body {
+    background-color: #0c59cf;
+    font-size: 28px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+#wrapper {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#rate {
+    background-color: white;
+}
+
+
+#back {
+    text-align: left;
+}
+
+.time {
+    color: lightgray;
+}
+
+.thumbs {
+    
+    height: 50%;
+    width: 50%;
+}
