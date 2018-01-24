@@ -1,0 +1,22 @@
+body{
+	text-align: center;
+}
+
+body h2{
+    color: blue;
+}
+
+body h5{
+    color: blue;
+}
+
+#ContinueButton{
+ position: absolute;
+ border: none;
+ width: 100%;
+ background-color: blue;
+ color: white;
+ font-size: 1.5em;
+ bottom: 0;
+ left: 0;
+}
