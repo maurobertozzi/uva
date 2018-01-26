@@ -14,5 +14,6 @@
 	<p id="drivenByAnswer">0161</p>
 	<p id="drivenBy">Your car will be here in</p>
 	<p id="drivenByAnswer">0:35 hour</p>
+	<button class="button" onclick="window.location.href='rateRide.html'">continue</button>
 </body>
 </html>

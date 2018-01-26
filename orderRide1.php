@@ -18,8 +18,8 @@
 
 <h2>When?</h2>
 <div class="btn-group">
-  <button id="buttonCheapest">Cheapest</button>
-  <button id="buttonFastest">Fastest</button>
+  <button id="buttonCheapest">Departure</button>
+  <button id="buttonFastest">Arrival</button>
 </div>
 	<h4>Sun 4 apr  14  57</h4>
 	<h3>Mon 5 apr  15  58</h3>
