@@ -1,0 +1,265 @@
+<html>
+  <head>
+<style>
+
+#ad-date-container
+{
+}
+
+.ad-date-line
+{
+}
+
+.unselectable 
+{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */      
+}
+
+
+</style>
+<script type="text/javascript">
+
+function debug(str)
+{
+  //console.log(str);
+  document.getElementById("debug").innerHTML = str;
+}
+
+
+var weekday = 
+[
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+
+var monthName = 
+[
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+
+
+function GetDayOfWeek(date)
+{
+  return weekday[date.getDay()];
+}
+
+function GetDate(date)
+{
+  return ""+date.getDate();
+}
+
+function GetMonth(date)
+{
+  return monthName[date.getMonth()];
+}
+
+function GetYear(date)
+{
+  return date.getFullYear();
+}
+
+function TwoDigits(number)
+{
+  number = ""+number;
+  if (number.length == 1)
+  {
+    number="0"+number;
+  }
+
+  return number;
+}
+
+var state_mousedown = false;
+var mouseDownY=0;
+
+var param_timepicker_offsetStart = 0;
+
+function timepicker_mousedown(event)
+{
+  state_mousedown = true;
+  mouseDownY = event.pageY;
+  param_timepicker_offsetStart = param_timepicker_offset;
+}
+function timepicker_mousemove(event)
+{
+  if (state_mousedown)
+  {
+    var delta = event.pageY-mouseDownY;
+    param_timepicker_offset = param_timepicker_offsetStart + delta;
+    if (param_timepicker_offset > 0)
+    {
+      param_timepicker_offset = 0;
+    }
+
+    var line = Math.floor(-param_timepicker_offset/param_timepicker_degrees_per_line);
+    if (line >= param_timepicker_nr_lines)
+    {
+      param_timepicker_offset = -(param_timepicker_nr_lines-1)*param_timepicker_degrees_per_line;
+    }
+
+    PositionLines();
+  }
+}
+
+function timepicker_mouseup(event)
+{
+  state_mousedown = false;
+}
+
+function toRadians(angle) 
+{
+  return angle * (Math.PI / 180);
+}
+
+
+var prevOnLoad_timepicker = window.onload;
+window.onload=onLoad_timepicker;
+function onLoad_timepicker()
+{
+  if (prevOnLoad_timepicker != null)
+  {
+    prevOnLoad_timepicker();
+  }
+
+  var svg = document.getElementById("ad-date-container");
+  if (svg)
+  {
+    svg.addEventListener("mousedown",  function(event){timepicker_mousedown(event)}, false);
+    svg.addEventListener("mousemove",  function(event){timepicker_mousemove(event)}, false);
+    svg.addEventListener("mouseup",    function(event){timepicker_mouseup  (event)}, false);
+    svg.addEventListener("mouseleave", function(event){timepicker_mouseup  (event)}, false);
+  }
+  PositionLines();
+}
+
+
+var param_timepicker_nr_lines = 80;
+var param_timepicker_width_inches = "4";
+var param_timepicker_width = 500;
+var param_timepicker_height = 300;
+var param_timepicker_font_height = 24;
+var param_timepicker_font_margin = 4;
+var param_timepicker_degrees_per_line = 14;
+var param_timepicker_offset = 0;
+
+function InsertTimePicker()
+{
+  document.write("<svg id='ad-date-container' class='unselectable' width='"+param_timepicker_width_inches+"in' viewBox='0 0 "+param_timepicker_width+" "+param_timepicker_height+"' ' >");
+  document.write("  <defs>");
+  document.write("    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>");
+  document.write("      <stop offset='0%' style='stop-color:rgb(192,192,192);stop-opacity:1' />");
+  document.write("      <stop offset='100%' style='stop-color:rgb(192,192,192);stop-opacity:0' />");
+  document.write("    </linearGradient>");
+  document.write("    <linearGradient id='grad2' x1='0%' y1='100%' x2='0%' y2='0%'>");
+  document.write("      <stop offset='0%' style='stop-color:rgb(192,192,192);stop-opacity:1' />");
+  document.write("      <stop offset='100%' style='stop-color:rgb(192,192,192);stop-opacity:0' />");
+  document.write("    </linearGradient>");
+  document.write("  </defs>");
+
+  document.write("  <rect fill='rgb(192,192,192)' width='100%' height='100%'/>");
+
+  var dateTime = new Date();
+
+  // Lines with dates
+  var i;
+  for (i=0;i<param_timepicker_nr_lines;i++)
+  {
+    var dateStr = weekday[dateTime.getDay()]+" "+dateTime.getDate()+" "+monthName[dateTime.getMonth()]+" "+dateTime.getFullYear()+" - "+TwoDigits(dateTime.getHours())+":"+TwoDigits(dateTime.getMinutes());
+
+    document.write("  <g style='display:inherit;' id='timepicker-line-"+i+"' transform='scale(1,1) translate(0,0) '>");
+    document.write("    <text x='0' y='0' fill='rgb(0,0,0)'  font-size='"+param_timepicker_font_height+"' font-family='sans' font-weight='600' >"+dateStr+"</text>");
+    document.write("  </g>");
+    dateTime.setMinutes(dateTime.getMinutes()+5);
+  }
+
+  // Red lines
+  var topline=(param_timepicker_height-param_timepicker_font_height)/2;
+  var botline=(param_timepicker_height+param_timepicker_font_height)/2;
+  document.write("  <line x1='0' y1='"+topline+"' x2='100%' y2='"+topline+"' style='stroke:rgb(255,0,0);stroke-width:3' />");
+  document.write("  <line x1='0' y1='"+botline+"' x2='100%' y2='"+botline+"' style='stroke:rgb(255,0,0);stroke-width:3' />");
+
+  // Gradients
+  document.write("  <rect width='100%' y='0%'  height='40%' fill='url(#grad1)'/>");
+  document.write("  <rect width='100%' y='60%' height='40%' fill='url(#grad2)'/>");
+  document.write("</svg> ");
+}
+
+
+function PositionLines()
+{
+
+  var radius=param_timepicker_height/2;
+
+  // Lines with dates
+  var i;
+  for (i=0;i<param_timepicker_nr_lines;i++)
+  {
+    var stylestr="inherit";
+    var angle = param_timepicker_offset+i*param_timepicker_degrees_per_line;
+    var lineHeight = 1;
+    var linePos = -100;
+    
+    if (angle > -90 && angle < 90)
+    {
+      lineHeight = Math.cos(toRadians(angle));
+      linePos = (param_timepicker_height/2)+radius*Math.sin(toRadians(angle));
+    }
+    else
+    {
+      stylestr="none";
+    }
+
+    var element = document.getElementById("timepicker-line-"+i);
+    if (element)
+    {
+      element.style.display = stylestr;
+      element.setAttributeNS(null, "transform", ' translate(0,'+linePos+') scale(1,'+lineHeight+') ');
+    }
+  }
+
+  {
+    var linetext = "";
+    var line = Math.floor(-param_timepicker_offset/param_timepicker_degrees_per_line);
+    var element = document.getElementById("timepicker-line-"+line);
+    if (element)
+    {
+      linetext = element.innerHTML;
+    }
+
+    debug ("line "+line+" : "+linetext);
+  }
+}
+
+
+</script>
+  </head>
+  <body>
+
+<script type="text/javascript">
+InsertTimePicker();
+</script>
+<p>
+<span id="debug"></span>
+
+  </body>
+</html>
